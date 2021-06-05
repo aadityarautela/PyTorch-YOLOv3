@@ -1,9 +1,12 @@
 # PyTorch-YOLOv3
 A minimal PyTorch implementation of YOLOv3, with support for training, inference and evaluation.
 
-[![Ubuntu CI](https://github.com/eriklindernoren/PyTorch-YOLOv3/actions/workflows/main.yml/badge.svg)](https://github.com/eriklindernoren/PyTorch-YOLOv3/actions/workflows/main.yml) [![PyPI pyversions](https://img.shields.io/pypi/pyversions/pytorchyolo.svg)](https://pypi.python.org/pypi/pytorchyolo/) [![PyPI license](https://img.shields.io/pypi/l/pytorchyolo.svg)](LICENSE)
+## Custom Scripts
 
-## Installation
+Extract the WiderPerson Dataset in a folder called WiderPerson, then run the script.
+```python setup_wp_dataset.py```
+Now proceed with Custom Dataset Section, with num_classes as 5
+
 ### Installing from source
 
 For normal training and evaluation we recommend installing the package from source using a poetry virtual environment.
