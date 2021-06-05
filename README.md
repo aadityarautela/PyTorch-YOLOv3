@@ -4,7 +4,9 @@ A minimal PyTorch implementation of YOLOv3, with support for training, inference
 ## Custom Scripts
 
 Extract the WiderPerson Dataset in a folder called WiderPerson, then run the script.
-```python setup_wp_dataset.py```
+```Bash
+python setup_wp_dataset.py
+```
 Now proceed with Custom Dataset Section, with num_classes as 5
 
 ### Installing from source
