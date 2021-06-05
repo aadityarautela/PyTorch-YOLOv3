@@ -14,7 +14,7 @@ Now proceed with Custom Dataset Section, with num_classes as 5
 For normal training and evaluation we recommend installing the package from source using a poetry virtual environment.
 
 ```bash
-git clone https://github.com/eriklindernoren/PyTorch-YOLOv3
+git clone https://github.com/aadityarautela/PyTorch-YOLOv3
 cd PyTorch-YOLOv3/
 pip3 install poetry --user
 poetry install
