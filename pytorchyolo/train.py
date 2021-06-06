@@ -74,6 +74,7 @@ def run():
     parser.add_argument("--nms_thres", type=float, default=0.5, help="Evaluation: IOU threshold for non-maximum suppression")
     parser.add_argument("--logdir", type=str, default="logs", help="Directory for training log files (e.g. for TensorBoard)")
     parser.add_argument("--seed", type=int, default=-1, help="Makes results reproducable. Set -1 to disable.")
+    parser.add_argument("--checkpoint_basepath", type='str', default='checkpoints/', help='Checkpoint Location')
     args = parser.parse_args()
     print(f"Command line arguments: {args}")
 
@@ -220,7 +221,10 @@ def run():
 
         # Save model to checkpoint file
         if epoch % args.checkpoint_interval == 0:
-            checkpoint_path = f"checkpoints/yolov3_ckpt_{epoch}.pth"
+            checkpoint_basepath = args.checkpoint_basepath
+            if checkpoint_basepath[-1] != '/':
+                checkpoint_basepath+='/'
+            checkpoint_path = f"{checkpoint_basepath}yolov3_ckpt_{epoch}.pth"
             print(f"---- Saving checkpoint to: '{checkpoint_path}' ----")
             torch.save(model.state_dict(), checkpoint_path)
 
