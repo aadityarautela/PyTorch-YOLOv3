@@ -57,32 +57,6 @@ def write_class_names(data_custom_dir):
                      'partially-visible persons\n', 'ignore regions\n', 'crowd\n'])
 
 
-def write_train_test_val(train_path, test_path, val_path, custom_train_path, custom_test_path, custom_valid_path, data_custom_img_dir):
-    train_lines = []
-    with open(train_path, 'r') as f:
-        train_lines = f.readlines()
-    train_lines = [os.path.join(
-        data_custom_img_dir, x + '.jpg')+'\n' for x in train_lines]
-    with open(custom_train_path, 'w') as f:
-        f.writelines(train_lines)
-
-    test_lines = []
-    with open(test_path, 'r') as f:
-        test_lines = f.readlines()
-    test_lines = [os.path.join(
-        data_custom_img_dir, x + '.jpg')+'\n' for x in test_lines]
-    with open(custom_test_path, 'w') as f:
-        f.writelines(test_lines)
-
-    valid_lines = []
-    with open(val_path, 'r') as f:
-        valid_lines = f.readlines()
-    valid_lines = [os.path.join(
-        data_custom_img_dir, x + '.jpg')+'\n' for x in valid_lines]
-    with open(custom_valid_path, 'w') as f:
-        f.writelines(valid_lines)
-
-
 def write_annotations(filename, data_custom_labels_dir, data_custom_img_dir):
     file_basename_jpg = os.path.basename(filename)[:-4]
     file_basename_txt = os.path.basename(filename)[:-7] + 'txt'
@@ -119,7 +93,7 @@ def write_test_train_validation(test_path, train_path, val_path,
     test_path_list = []
     with open(test_path, 'r') as f:
         test_path_list = f.readlines()
-    test_path_list = [x[:-1]+'.jpg\n' for x in test_path_list]
+    test_path_list = [x[:-1]+'.jpg\n' if x[-1]=='\n' else x+'.jpg\n' for x in test_path_list]
     test_path_list = [os.path.join(data_custom_img_dir, x)
                       for x in test_path_list]
     with open(custom_test_path, 'w') as f:
@@ -129,7 +103,7 @@ def write_test_train_validation(test_path, train_path, val_path,
     train_path_list = []
     with open(train_path, 'r') as f:
         train_path_list = f.readlines()
-    train_path_list = [x[:-1]+'.jpg\n' for x in train_path_list]
+    train_path_list = [x[:-1]+'.jpg\n' if x[-1]=='\n' else x+'.jpg\n' for x in train_path_list]
     train_path_list = [os.path.join(data_custom_img_dir, x)
                        for x in train_path_list]
     with open(custom_train_path, 'w') as f:
@@ -139,7 +113,7 @@ def write_test_train_validation(test_path, train_path, val_path,
     valid_path_list = []
     with open(val_path, 'r') as f:
         valid_path_list = f.readlines()
-    valid_path_list = [x[:-1]+'.jpg\n' for x in valid_path_list]
+    valid_path_list = [x[:-1]+'.jpg\n' if x[-1]=='\n' else x+'.jpg\n' for x in valid_path_list]
     valid_path_list = [os.path.join(data_custom_img_dir, x)
                        for x in valid_path_list]
     with open(custom_valid_path, 'w') as f:
